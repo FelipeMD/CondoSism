@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Microsoft.VisualBasic;
 using WebApplication1.Domain.Context;
 using WebApplication1.Domain.Moradores.Interfaces;
@@ -19,21 +22,22 @@ namespace WebApplication1.Domain.Moradores
         
         public Morador Create(Morador morador)
         {
+            try
+            {
+                _context.Add(morador);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
             return morador;
         }
 
         public Morador FindById(long id)
         {
-            return new Morador
-            {
-                Id = 1,
-                PrimeiroNome = "Felipe",
-                Sobrenome = "Souza",
-                DataNasciment = new DateTime(05/04/1995),
-                Telefone = "99999999",
-                Cpf = "04714760130",
-                Email = "fm.cab@live.com"
-            };
+            return _context.Moradores.SingleOrDefault(m => m.Id.Equals(id));
         }
         
         public List<Morador> FindAll()
@@ -43,12 +47,46 @@ namespace WebApplication1.Domain.Moradores
         
         public Morador Update(Morador morador)
         {
+            if (!Exists(morador.Id)) return new Morador();
+            
+            var result = _context.Moradores.SingleOrDefault(m => m.Id.Equals(morador.Id));
+
+            if (result != null)
+            {
+                try
+                {
+                    _context.Entry(result).CurrentValues.SetValues(morador);
+                    _context.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
             return morador;
         }
-        
+
+        private bool Exists(long id)
+        {
+            return _context.Moradores.Any(m => m.Id.Equals(id));
+        }
+
         public void Delete(long id)
         {
-            //TODO: implementar delete
+            var result = _context.Moradores.SingleOrDefault(m => m.Id.Equals(id));
+            if (result != null)
+            {
+                try
+                {
+                    _context.Moradores.Remove(result);
+                    _context.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
     }
 }
