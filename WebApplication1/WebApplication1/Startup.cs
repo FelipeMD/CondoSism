@@ -52,6 +52,7 @@ namespace WebApplication1
             services.AddScoped<IMoradorService, MoradorService>();
             services.AddScoped<IMoradorRepository, MoradorRepository>();
             services.AddScoped<IApartamentoService, ApartamentoService>();
+            services.AddScoped<IApartamentoRepository, ApartamentoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
