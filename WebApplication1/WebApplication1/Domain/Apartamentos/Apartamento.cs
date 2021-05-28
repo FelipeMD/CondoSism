@@ -9,7 +9,7 @@ namespace WebApplication1.Domain.Apartamentos
         public int Numero { get; set; }
         public string Bloco { get; set; }
         
-        public long MoradorId { get; set; }
-        public List<Morador> Moradores { get; set; }
+        // public long MoradorId { get; set; }
+        // public List<Morador> Moradores { get; set; }
     }
 }

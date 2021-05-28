@@ -21,8 +21,8 @@ namespace WebApplication1.Domain.Apartamentos
                 Id = IncrementAndGet(),
                 Numero = 1,
                 Bloco = "B-1",
-                MoradorId = 1,
-                Moradores = new List<Morador>()
+                // MoradorId = 1,
+                // Moradores = new List<Morador>()
             };
         }
 
@@ -54,8 +54,8 @@ namespace WebApplication1.Domain.Apartamentos
                 Id = IncrementAndGet(),
                 Numero = 1,
                 Bloco = "B-1",
-                MoradorId = 1,
-                Moradores = new List<Morador>()
+                // MoradorId = 1,
+                // Moradores = new List<Morador>()
             };
         }
         
