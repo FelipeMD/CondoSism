@@ -31,3 +31,15 @@ C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\
 C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Pomelo.JsonObject.dll
 C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\obj\Debug\net5.0\WebApplication1.csproj.CopyComplete
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Evolve.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.AspNetCore.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.Sinks.Console.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
+C:\Users\fmcab\Desktop\projeto\TestandoAPIs\WebApplication1\WebApplication1\bin\Debug\net5.0\Serilog.Sinks.File.dll

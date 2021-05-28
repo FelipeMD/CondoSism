@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebApplication1.Domain.Apartamentos;
+using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
-using WebApplication1.Domain.Moradores;
-using WebApplication1.Domain.Moradores.Interfaces;
 
 namespace WebApplication1.Infrastructure.Repository
 {
-    public class MoradorRepository : IMoradorRepository
+    public class ApartamentoRepository : IApartamentoRepository
     {
         private MySqlContext _context;
-        public MoradorRepository(MySqlContext context)
+        public ApartamentoRepository(MySqlContext context)
         {
             _context = context;
         }
         
-        public Morador Create(Morador morador)
+        public Apartamento Create(Apartamento apartamento)
         {
             try
             {
-                _context.Add(morador);
+                _context.Add(apartamento);
                 _context.SaveChanges();
             }
             catch (Exception)
@@ -27,30 +27,30 @@ namespace WebApplication1.Infrastructure.Repository
                 throw;
             }
 
-            return morador;
+            return apartamento;
         }
 
-        public Morador FindById(long id)
+        public Apartamento FindById(long id)
         {
-            return _context.Moradores.SingleOrDefault(m => m.Id.Equals(id));
+            return _context.Apartamentos.SingleOrDefault(m => m.Id.Equals(id));
         }
         
-        public List<Morador> FindAll()
+        public List<Apartamento> FindAll()
         {
-            return _context.Moradores.ToList();
+            return _context.Apartamentos.ToList();
         }
         
-        public Morador Update(Morador morador)
+        public Apartamento Update(Apartamento apartamento)
         {
-            if (!Exists(morador.Id)) return null;
+            if (!Exists(apartamento.Id)) return new Apartamento();
             
-            var result = _context.Moradores.SingleOrDefault(m => m.Id.Equals(morador.Id));
+            var result = _context.Apartamentos.SingleOrDefault(m => m.Id.Equals(apartamento.Id));
 
             if (result != null)
             {
                 try
                 {
-                    _context.Entry(result).CurrentValues.SetValues(morador);
+                    _context.Entry(result).CurrentValues.SetValues(apartamento);
                     _context.SaveChanges();
                 }
                 catch (Exception)
@@ -59,22 +59,22 @@ namespace WebApplication1.Infrastructure.Repository
                 }
             }
 
-            return morador;
+            return apartamento;
         }
 
         public bool Exists(long id)
         {
-            return _context.Moradores.Any(m => m.Id.Equals(id));
+            return _context.Apartamentos.Any(m => m.Id.Equals(id));
         }
 
         public void Delete(long id)
         {
-            var result = _context.Moradores.SingleOrDefault(m => m.Id.Equals(id));
+            var result = _context.Apartamentos.SingleOrDefault(m => m.Id.Equals(id));
             if (result != null)
             {
                 try
                 {
-                    _context.Moradores.Remove(result);
+                    _context.Apartamentos.Remove(result);
                     _context.SaveChanges();
                 }
                 catch (Exception)

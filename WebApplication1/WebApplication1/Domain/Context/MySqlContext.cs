@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Moradores;
 
 namespace WebApplication1.Domain.Context
@@ -16,5 +17,7 @@ namespace WebApplication1.Domain.Context
         }
         
         public DbSet<Morador> Moradores { get; set; }
+        
+        public DbSet<Apartamento> Apartamentos { get; set; }
     }
 }
