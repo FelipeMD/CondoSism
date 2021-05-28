@@ -2,66 +2,42 @@
 using System.Threading;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Moradores;
+using WebApplication1.Infrastructure.Repository;
 
 namespace WebApplication1.Domain.Apartamentos
 {
     public class ApartamentoService : IApartamentoService
     {
-        private volatile int count;
-        
-        public Apartamento Create(Apartamento apartamento)
+        private readonly IApartamentoRepository _repository;
+
+        public ApartamentoService(IApartamentoRepository repository)
         {
-            return apartamento;
+            _repository = repository;
         }
 
         public Apartamento FindById(long id)
         {
-            return new Apartamento()
-            {
-                Id = IncrementAndGet(),
-                Numero = 1,
-                Bloco = "B-1",
-                MoradorId = 1,
-                Moradores = new List<Morador>()
-            };
+            return _repository.FindById(id);
         }
 
         public List<Apartamento> FindAll()
         {
-            List<Apartamento> apartamentos = new List<Apartamento>();
-            for (int i = 0; i < 8; i++)
-            {
-                Apartamento apartamento = MockApartamento(i);
-                apartamentos.Add(apartamento);
-            }
-            return apartamentos;
+            return _repository.FindAll();
+        }
+        
+        public Apartamento Create(Apartamento apartamento)
+        {
+            return _repository.Create(apartamento);
         }
         
         public Apartamento Update(Apartamento apartamento)
         {
-            return apartamento;
+            return _repository.Update(apartamento);
         }
 
         public void Delete(long id)
         {
-            //TODO: implementar delete
-        }
-        
-        private Apartamento MockApartamento(int i)
-        {
-            return new Apartamento()
-            {
-                Id = IncrementAndGet(),
-                Numero = 1,
-                Bloco = "B-1",
-                MoradorId = 1,
-                Moradores = new List<Morador>()
-            };
-        }
-        
-        private long IncrementAndGet()
-        {
-            return Interlocked.Increment(ref count);
+            _repository.Delete(id);
         }
     }
 }

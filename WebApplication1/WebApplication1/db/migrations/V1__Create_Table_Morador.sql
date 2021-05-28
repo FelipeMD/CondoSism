@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `morador` (
+﻿CREATE TABLE IF NOT EXISTS `morador` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `nome` varchar(80) NOT NULL,
   `sobrenome` varchar(300) NOT NULL,

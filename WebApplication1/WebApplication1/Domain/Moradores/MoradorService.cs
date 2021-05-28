@@ -1,54 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using Microsoft.VisualBasic;
-using WebApplication1.Domain.Context;
+﻿using System.Collections.Generic;
 using WebApplication1.Domain.Moradores.Interfaces;
-using WebApplication1.Domain.ValueObjetcs;
 
 namespace WebApplication1.Domain.Moradores
 {
     public class MoradorService : IMoradorService
     {
-        private MySqlContext _context;
-        public MoradorService(MySqlContext context)
+        private readonly IMoradorRepository _repository;
+        public MoradorService(IMoradorRepository repository)
         {
-            _context = context;
-        }
-        
-        public Morador Create(Morador morador)
-        {
-            return morador;
-        }
-
-        public Morador FindById(long id)
-        {
-            return new Morador
-            {
-                Id = 1,
-                PrimeiroNome = "Felipe",
-                Sobrenome = "Souza",
-                DataNasciment = new DateTime(05/04/1995),
-                Telefone = "99999999",
-                Cpf = "04714760130",
-                Email = "fm.cab@live.com"
-            };
+            _repository = repository;
         }
         
         public List<Morador> FindAll()
         {
-            return _context.Moradores.ToList();
+            return _repository.FindAll();
         }
         
+        public Morador FindById(long id)
+        {
+            return _repository.FindById(id);
+        }
+        
+        public Morador Create(Morador morador)
+        {
+           return _repository.Create(morador);
+        }
+
         public Morador Update(Morador morador)
         {
-            return morador;
+            return _repository.Update(morador);
         }
         
         public void Delete(long id)
         {
-            //TODO: implementar delete
+            _repository.Delete(id);
         }
     }
 }
