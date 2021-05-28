@@ -10,10 +10,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
+using WebApplication1.Domain.Context;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
+using WebApplication1.Infrastructure.Repository;
 
 namespace WebApplication1
 {
@@ -30,9 +34,13 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
 
+            var connection = Configuration["MySQLConnection:MySQLConnectionString"];
+            services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
+            
             services.AddControllers();
-
+            
             services.AddScoped<IMoradorService, MoradorService>();
+            services.AddScoped<IMoradorRepository, MoradorRepository>();
             services.AddScoped<IApartamentoService, ApartamentoService>();
         }
 

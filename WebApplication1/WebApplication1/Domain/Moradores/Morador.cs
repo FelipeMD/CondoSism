@@ -1,17 +1,32 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.VisualBasic;
 using WebApplication1.Domain.ValueObjetcs;
 
 namespace WebApplication1.Domain.Moradores
 {
+    [Table("morador")]
     public class Morador
     {
+        [Column("id")]
         public long Id { get; set; }
+        
+        [Column("nome")]
         public string PrimeiroNome { get; set; }
+        
+        [Column("sobrenome")]
         public string Sobrenome { get; set; }
+        
+        [Column("nascimento")]
         public DateTime DataNasciment { get; set; }
+        
+        [Column("telefone")]
         public string Telefone { get; set; }
-        public Cpf Cpf { get; set; }
+        
+        [Column("cpf")]
+        public string Cpf { get; set; }
+        
+        [Column("email")]
         public string Email { get; set; }
     }
 }
