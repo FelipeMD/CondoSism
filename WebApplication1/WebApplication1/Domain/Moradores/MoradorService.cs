@@ -18,7 +18,7 @@ namespace WebApplication1.Domain.Moradores
         
         public void Delete(long id)
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public Morador FindById(long id)
