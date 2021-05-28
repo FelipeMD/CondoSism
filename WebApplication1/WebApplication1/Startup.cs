@@ -11,7 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.MySqlClient;
+using Serilog;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
@@ -23,19 +25,27 @@ namespace WebApplication1
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IWebHostEnvironment Environment { get; }
+        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
-        }
+            Environment = environment;
 
-        public IConfiguration Configuration { get; }
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console().CreateLogger();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
+            
+            if (Environment.IsDevelopment())
+            {
+                MigrationDatabase(connection);
+            }
             
             services.AddControllers();
             
@@ -62,6 +72,26 @@ namespace WebApplication1
             {
                 endpoints.MapControllers();
             });
+        }
+        
+        private void MigrationDatabase(string connection)
+        {
+            try
+            {
+                var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connection);
+
+                var evolve = new Evolve.Evolve(evolveConnection, msg => Log.Information(msg))
+                {
+                    Locations = new List<string> {"db/migrations", "db/dataset"},
+                    IsEraseDisabled = true,
+                };
+                evolve.Migrate();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Database migration failed", ex);
+                throw;
+            }
         }
     }
 }

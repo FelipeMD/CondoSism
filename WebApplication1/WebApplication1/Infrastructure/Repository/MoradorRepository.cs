@@ -42,7 +42,7 @@ namespace WebApplication1.Infrastructure.Repository
         
         public Morador Update(Morador morador)
         {
-            if (!Exists(morador.Id)) return new Morador();
+            if (!Exists(morador.Id)) return null;
             
             var result = _context.Moradores.SingleOrDefault(m => m.Id.Equals(morador.Id));
 
