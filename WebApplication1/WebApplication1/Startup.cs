@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1.Domain.Moradores;
+using WebApplication1.Domain.Moradores.Interfaces;
 
 namespace WebApplication1
 {
@@ -27,6 +29,8 @@ namespace WebApplication1
         {
 
             services.AddControllers();
+
+            services.AddScoped<IMoradorService, MoradorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
