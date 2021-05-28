@@ -15,11 +15,6 @@ namespace WebApplication1.Domain.Moradores
         {
             return morador;
         }
-        
-        public void Delete(long id)
-        {
-            
-        }
 
         public Morador FindById(long id)
         {
@@ -49,6 +44,11 @@ namespace WebApplication1.Domain.Moradores
         public Morador Update(Morador morador)
         {
             return morador;
+        }
+        
+        public void Delete(long id)
+        {
+            //TODO: implementar delete
         }
 
         private Morador MockMorador(object i)
