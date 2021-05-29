@@ -5,8 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
 using Serilog;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
@@ -59,6 +61,22 @@ namespace WebApplication1
             filterOptions.ContentResponseEnricherList.Add(new ApartamentoEnricher());
             
             services.AddSingleton(filterOptions);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "REST API's using Azure with AST.NET Core 5 and Docker",
+                        Version = "v1",
+                        Description = "API RESTful developed in 'REST API's using Azure with AST.NET Core 5 and Docker'",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Felipe Souza",
+                            Url = new Uri("https://github.com/FelipeMD")
+                        }
+                    });
+            });
             
             services.AddControllers();
             
@@ -80,6 +98,18 @@ namespace WebApplication1
 
             app.UseRouting();
 
+            app.UseSwagger();
+            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", 
+                    "REST API's using Azure with AST.NET Core 5 and Docker - v1");
+            });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

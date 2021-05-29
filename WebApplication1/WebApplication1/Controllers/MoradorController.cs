@@ -25,6 +25,9 @@ namespace WebApplication1.Controllers
         }
         
         [HttpGet]
+        [ProducesResponseType((200), Type = typeof(List<MoradorVo>))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
@@ -32,6 +35,9 @@ namespace WebApplication1.Controllers
         }
         
         [HttpGet("{id}")]
+        [ProducesResponseType((200), Type = typeof(MoradorVo))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult FindById(long id)
         {
@@ -41,6 +47,9 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPost]
+        [ProducesResponseType((200), Type = typeof(MoradorVo))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Create([FromBody] MoradorVo morador)
         {
@@ -49,6 +58,9 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPut]
+        [ProducesResponseType((200), Type = typeof(MoradorVo))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Update([FromBody] MoradorVo morador)
         {
@@ -57,6 +69,9 @@ namespace WebApplication1.Controllers
         }
         
         [HttpDelete("{id}")]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(long id)
         {
