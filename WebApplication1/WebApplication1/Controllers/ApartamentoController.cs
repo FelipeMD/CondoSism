@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using WebApplication1.Data.ValueObjetcs;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
+using WebApplication1.Hypermedia.Filters;
 
 namespace WebApplication1.Controllers
 {
@@ -20,12 +21,14 @@ namespace WebApplication1.Controllers
         }
         
         [HttpGet]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
             return Ok(_apartamentoService.FindAll());
         }
         
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult FindById(long id)
         {
             var apartamento = _apartamentoService.FindById(id);
@@ -34,6 +37,7 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPost]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Create([FromBody] ApartamentoVo apartamento)
         {
             if (apartamento == null) return NotFound();
@@ -41,6 +45,7 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPut]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Update([FromBody] ApartamentoVo apartamento)
         {
             if (apartamento == null) return NotFound();
@@ -48,6 +53,7 @@ namespace WebApplication1.Controllers
         }
         
         [HttpDelete("{id}")]
+        [TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Delete(long id)
         {
             _apartamentoService.Delete(id);

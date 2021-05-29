@@ -13,6 +13,8 @@ using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
+using WebApplication1.Hypermedia.Enricher;
+using WebApplication1.Hypermedia.Filters;
 using WebApplication1.Infrastructure.Generic;
 
 namespace WebApplication1
@@ -42,22 +44,27 @@ namespace WebApplication1
             }
             
             /*Exibe como XML*/
-            // services.AddMvc(options =>
-            // {
-            //     options.RespectBrowserAcceptHeader = true;
-            //
-            //     options.FormatterMappings.SetMediaTypeMappingForFormat("xml",
-            //         MediaTypeHeaderValue.Parse("application/xml"));
-            //     options.FormatterMappings.SetMediaTypeMappingForFormat("json",
-            //         MediaTypeHeaderValue.Parse("application/jason"));
-            // }).AddXmlDataContractSerializerFormatters();
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true;
+            
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml",
+                    MediaTypeHeaderValue.Parse("application/xml"));
+                options.FormatterMappings.SetMediaTypeMappingForFormat("json",
+                    MediaTypeHeaderValue.Parse("application/jason"));
+            }).AddXmlDataContractSerializerFormatters();
+
+            var filterOptions = new HyperMediaFilterOptions();
+            filterOptions.ContentResponseEnricherList.Add(new MoradorEnricher());
+            filterOptions.ContentResponseEnricherList.Add(new ApartamentoEnricher());
+            
+            services.AddSingleton(filterOptions);
             
             services.AddControllers();
             
             services.AddScoped<IMoradorService, MoradorService>();
             services.AddScoped<IApartamentoService, ApartamentoService>();
-            
-            
+
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
@@ -78,6 +85,7 @@ namespace WebApplication1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id}");
             });
         }
 
