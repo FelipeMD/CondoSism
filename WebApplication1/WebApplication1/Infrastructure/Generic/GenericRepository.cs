@@ -13,7 +13,7 @@ namespace WebApplication1.Infrastructure.Generic
 
         private DbSet<T> dataset;
         
-        public GenericRepository(MySqlContext context, DbSet<T> dataset)
+        public GenericRepository(MySqlContext context)
         {
             _context = context;
             dataset = _context.Set<T>();

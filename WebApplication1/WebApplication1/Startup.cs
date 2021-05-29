@@ -1,24 +1,18 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
-using MySql.Data.MySqlClient;
 using Serilog;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
+using WebApplication1.Infrastructure.Generic;
 using WebApplication1.Infrastructure.Repository;
 
 namespace WebApplication1
@@ -44,15 +38,16 @@ namespace WebApplication1
             
             if (Environment.IsDevelopment())
             {
-                MigrationDatabase(connection);
+                MigrateDatabase(connection);
             }
             
             services.AddControllers();
             
             services.AddScoped<IMoradorService, MoradorService>();
-            services.AddScoped<IMoradorRepository, MoradorRepository>();
             services.AddScoped<IApartamentoService, ApartamentoService>();
             services.AddScoped<IApartamentoRepository, ApartamentoRepository>();
+            
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,16 +69,15 @@ namespace WebApplication1
                 endpoints.MapControllers();
             });
         }
-        
-        private void MigrationDatabase(string connection)
+
+        private void MigrateDatabase(string connection)
         {
             try
             {
                 var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connection);
-
                 var evolve = new Evolve.Evolve(evolveConnection, msg => Log.Information(msg))
                 {
-                    Locations = new List<string> {"db/migrations", "db/dataset"},
+                    Locations = new List<string> { "db/migrations", "db/dataset" },
                     IsEraseDisabled = true,
                 };
                 evolve.Migrate();

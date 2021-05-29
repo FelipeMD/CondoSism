@@ -1,16 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.VisualBasic;
+using WebApplication1.Domain.Base;
 using WebApplication1.Domain.ValueObjetcs;
 
 namespace WebApplication1.Domain.Moradores
 {
     [Table("morador")]
-    public class Morador
+    public class Morador : BaseEntity
     {
-        [Column("id")]
-        public long Id { get; set; }
-        
         [Column("nome")]
         public string PrimeiroNome { get; set; }
         

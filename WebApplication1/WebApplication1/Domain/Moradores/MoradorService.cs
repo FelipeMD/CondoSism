@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using WebApplication1.Domain.Moradores.Interfaces;
+using WebApplication1.Infrastructure.Generic;
 
 namespace WebApplication1.Domain.Moradores
 {
     public class MoradorService : IMoradorService
     {
-        private readonly IMoradorRepository _repository;
-        public MoradorService(IMoradorRepository repository)
+        private readonly IRepository<Morador> _repository;
+        public MoradorService(IRepository<Morador> repository)
         {
             _repository = repository;
         }
