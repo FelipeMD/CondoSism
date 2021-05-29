@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 using Serilog;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
@@ -39,6 +40,17 @@ namespace WebApplication1
             {
                 MigrateDatabase(connection);
             }
+            
+            /*Exibe como XML*/
+            // services.AddMvc(options =>
+            // {
+            //     options.RespectBrowserAcceptHeader = true;
+            //
+            //     options.FormatterMappings.SetMediaTypeMappingForFormat("xml",
+            //         MediaTypeHeaderValue.Parse("application/xml"));
+            //     options.FormatterMappings.SetMediaTypeMappingForFormat("json",
+            //         MediaTypeHeaderValue.Parse("application/jason"));
+            // }).AddXmlDataContractSerializerFormatters();
             
             services.AddControllers();
             

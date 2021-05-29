@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[3.1.0-alpha1, )"
             },
+            "Microsoft.AspNetCore.Mvc.Formatters.Xml": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.14, )"
