@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Evolve" Version="3.1.0-alpha1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.14" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.5" />
