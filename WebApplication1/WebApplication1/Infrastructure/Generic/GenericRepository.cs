@@ -11,55 +11,53 @@ namespace WebApplication1.Infrastructure.Generic
     {
         private MySqlContext _context;
 
-        private DbSet<T> _dataset;
+        private DbSet<T> dataset;
         
         public GenericRepository(MySqlContext context, DbSet<T> dataset)
         {
             _context = context;
-            _dataset = dataset;
+            dataset = _context.Set<T>();
         }
         
         public T Create(T item)
         {
             try
             {
-                _dataset.Add(item);
+                dataset.Add(item);
                 _context.SaveChanges();
+                return item;
             }
             catch (Exception)
             {
                 throw;
             }
-
-            return item;
         }
 
         public T FindById(long id)
         {
-            return _dataset.SingleOrDefault(m => m.Id.Equals(id));
+            return dataset.SingleOrDefault(m => m.Id.Equals(id));
         }
 
         public List<T> FindAll()
         {
-            return _dataset.ToList();
+            return dataset.ToList();
         }
 
         public T Update(T item)
         {
-            var result = _dataset.SingleOrDefault(m => m.Id.Equals(item.Id));
+            var result = dataset.SingleOrDefault(m => m.Id.Equals(item.Id));
             if (result != null)
             {
                 try
                 {
                     _context.Entry(result).CurrentValues.SetValues(item);
                     _context.SaveChanges();
+                    return result;
                 }
                 catch (Exception)
                 {
                     throw;
                 }
-                
-                return result;
             }
             else
             {
@@ -69,12 +67,12 @@ namespace WebApplication1.Infrastructure.Generic
 
         public void Delete(long id)
         {
-            var result = _dataset.SingleOrDefault(m => m.Id.Equals(id));
+            var result = dataset.SingleOrDefault(m => m.Id.Equals(id));
             if (result != null)
             {
                 try
                 {
-                    _dataset.Remove(result);
+                     dataset.Remove(result);
                     _context.SaveChanges();
                 }
                 catch (Exception)
@@ -86,7 +84,7 @@ namespace WebApplication1.Infrastructure.Generic
 
         public bool Exists(long id)
         {
-            return _context.Moradores.Any(m => m.Id.Equals(id));
+            return dataset.Any(m => m.Id.Equals(id));
         }
 
     }
