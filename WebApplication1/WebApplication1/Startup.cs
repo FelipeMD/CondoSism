@@ -13,7 +13,6 @@ using WebApplication1.Domain.Context;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
 using WebApplication1.Infrastructure.Generic;
-using WebApplication1.Infrastructure.Repository;
 
 namespace WebApplication1
 {
@@ -45,7 +44,7 @@ namespace WebApplication1
             
             services.AddScoped<IMoradorService, MoradorService>();
             services.AddScoped<IApartamentoService, ApartamentoService>();
-            services.AddScoped<IApartamentoRepository, ApartamentoRepository>();
+            
             
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }

@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebApplication1.Domain.Base;
 using WebApplication1.Domain.Moradores;
 
 namespace WebApplication1.Domain.Apartamentos
 {
     [Table("apartamento")]
-    public class Apartamento
+    public class Apartamento : BaseEntity
     {
-        [Column("id")]
-        public long Id { get; set; }
-        
         [Column("numero")]
         public int Numero { get; set; }
         

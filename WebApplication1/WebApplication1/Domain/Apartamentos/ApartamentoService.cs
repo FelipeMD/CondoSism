@@ -2,15 +2,14 @@
 using System.Threading;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Moradores;
-using WebApplication1.Infrastructure.Repository;
+using WebApplication1.Infrastructure.Generic;
 
 namespace WebApplication1.Domain.Apartamentos
 {
     public class ApartamentoService : IApartamentoService
     {
-        private readonly IApartamentoRepository _repository;
-
-        public ApartamentoService(IApartamentoRepository repository)
+        private readonly IRepository<Apartamento> _repository;
+        public ApartamentoService(IRepository<Apartamento> repository)
         {
             _repository = repository;
         }
