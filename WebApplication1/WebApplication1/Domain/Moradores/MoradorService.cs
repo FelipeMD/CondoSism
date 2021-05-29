@@ -35,5 +35,10 @@ namespace WebApplication1.Domain.Moradores
         {
             _repository.Delete(id);
         }
+        
+        public void Exists(long id)
+        {
+            _repository.Exists(id);
+        }
     }
 }

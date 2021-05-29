@@ -9,5 +9,6 @@ namespace WebApplication1.Domain.Moradores.Interfaces
         List<Morador> FindAll();
         Morador Update(Morador morador);
         void Delete(long id);
+        void Exists(long id);
     }
 }
