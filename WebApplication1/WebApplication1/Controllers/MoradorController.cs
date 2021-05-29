@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1.Data.ValueObjetcs;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
 
@@ -37,14 +38,14 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPost]
-        public IActionResult Create([FromBody] Morador morador)
+        public IActionResult Create([FromBody] MoradorVo morador)
         {
             if (morador == null) return NotFound();
             return Ok(_moradorService.Create(morador));
         }
         
         [HttpPut]
-        public IActionResult Update([FromBody] Morador morador)
+        public IActionResult Update([FromBody] MoradorVo morador)
         {
             if (morador == null) return NotFound();
             return Ok(_moradorService.Update(morador));

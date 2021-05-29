@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace WebApplication1.Domain.ValueObjetcs
+namespace WebApplication1.Controllers.ValueObjetcs
 {
     public struct Cpf
     {

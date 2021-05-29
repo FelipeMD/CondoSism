@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using WebApplication1.Data.Converter.Implementations;
+using WebApplication1.Data.ValueObjetcs;
 using WebApplication1.Domain.Moradores.Interfaces;
 using WebApplication1.Infrastructure.Generic;
 
@@ -7,39 +9,42 @@ namespace WebApplication1.Domain.Moradores
     public class MoradorService : IMoradorService
     {
         private readonly IRepository<Morador> _repository;
+        private readonly MoradorConverter _converter;
         public MoradorService(IRepository<Morador> repository)
         {
             _repository = repository;
+            _converter = new MoradorConverter();
         }
         
-        public List<Morador> FindAll()
+        public List<MoradorVo> FindAll()
         {
-            return _repository.FindAll();
+            return _converter.Parse(_repository.FindAll());
         }
         
-        public Morador FindById(long id)
+        public MoradorVo FindById(long id)
         {
-            return _repository.FindById(id);
+            return _converter.Parse(_repository.FindById(id));
         }
         
-        public Morador Create(Morador morador)
+        public MoradorVo Create(MoradorVo morador)
         {
-           return _repository.Create(morador);
+            var moradorEntity = _converter.Parse(morador);
+            moradorEntity = _repository.Create(moradorEntity);
+
+            return _converter.Parse(moradorEntity);
         }
 
-        public Morador Update(Morador morador)
+        public MoradorVo Update(MoradorVo morador)
         {
-            return _repository.Update(morador);
+            var moradorEntity = _converter.Parse(morador);
+            moradorEntity = _repository.Update(moradorEntity);
+
+            return _converter.Parse(moradorEntity);
         }
         
         public void Delete(long id)
         {
             _repository.Delete(id);
-        }
-        
-        public void Exists(long id)
-        {
-            _repository.Exists(id);
         }
     }
 }

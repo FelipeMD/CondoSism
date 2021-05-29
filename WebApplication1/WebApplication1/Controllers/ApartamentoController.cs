@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebApplication1.Data.ValueObjetcs;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 
@@ -33,14 +34,14 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPost]
-        public IActionResult Create([FromBody] Apartamento apartamento)
+        public IActionResult Create([FromBody] ApartamentoVo apartamento)
         {
             if (apartamento == null) return NotFound();
             return Ok(_apartamentoService.Create(apartamento));
         }
         
         [HttpPut]
-        public IActionResult Update([FromBody] Apartamento apartamento)
+        public IActionResult Update([FromBody] ApartamentoVo apartamento)
         {
             if (apartamento == null) return NotFound();
             return Ok(_apartamentoService.Update(apartamento));

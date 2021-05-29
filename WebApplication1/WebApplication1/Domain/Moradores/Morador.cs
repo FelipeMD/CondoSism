@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.VisualBasic;
 using WebApplication1.Domain.Base;
-using WebApplication1.Domain.ValueObjetcs;
 
 namespace WebApplication1.Domain.Moradores
 {
