@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Internal;
 using WebApplication1.Domain.Context;
 using WebApplication1.Domain.Moradores;
@@ -33,6 +34,28 @@ namespace WebApplication1.Infrastructure.Repositories
             }
 
             return user;
+        }
+
+        public List<Morador> FindByName(string firstName, string secondName)
+        {
+            if (!string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(secondName))
+            {
+                return _context.Moradores.Where(
+                    m => m.PrimeiroNome.Contains(firstName)
+                         && m.Sobrenome.Contains(secondName)).ToList();
+            }
+            else if (string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(secondName))
+            {
+                return _context.Moradores.Where(
+                    m => m.Sobrenome.Contains(secondName)).ToList();
+            }
+            else if (!string.IsNullOrWhiteSpace(firstName) && string.IsNullOrWhiteSpace(secondName))
+            {
+                return _context.Moradores.Where(
+                    m => m.PrimeiroNome.Contains(firstName)).ToList();
+            }
+
+            return null;
         }
     }
 }

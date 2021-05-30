@@ -16,15 +16,20 @@ namespace WebApplication1.Domain.Moradores
             _repository = repository;
             _converter = new MoradorConverter();
         }
-        
+
         public List<MoradorVo> FindAll()
         {
             return _converter.Parse(_repository.FindAll());
         }
-        
+
         public MoradorVo FindById(long id)
         {
             return _converter.Parse(_repository.FindById(id));
+        }
+        
+        public List<MoradorVo> FindByName(string firstName, string lastName)
+        {
+            return _converter.Parse(_repository.FindByName(firstName, lastName));
         }
         
         public MoradorVo Create(MoradorVo morador)

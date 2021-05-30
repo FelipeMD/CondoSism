@@ -124,7 +124,7 @@ namespace WebApplication1
                     {
                         Title = "SistemaCondominio",
                         Version = "v1",
-                        Description = "API RESTful developed in 'REST API's using Azure with AST.NET Core 5 and Docker'",
+                        Description = "API RESTful developed in AST.NET Core 5",
                         Contact = new OpenApiContact
                         {
                             Name = "Felipe Souza",
@@ -165,7 +165,7 @@ namespace WebApplication1
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", 
-                    "REST API's using Azure with AST.NET Core 5 and Docker - v1");
+                    "API RESTful developed in AST.NET Core 5 - v1");
             });
 
             var option = new RewriteOptions();

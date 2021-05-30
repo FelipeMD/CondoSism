@@ -48,6 +48,18 @@ namespace WebApplication1.Controllers
             return Ok(morador);
         }
         
+        [HttpGet("findMoradorByName")]
+        [ProducesResponseType((200), Type = typeof(MoradorVo))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult FindMoradorByName([FromQuery] string firstName, [FromQuery] string lastName)
+        {
+            var morador = _moradorService.FindByName(firstName, lastName);
+            if (morador == null) return NotFound();
+            return Ok(morador);
+        }
+        
         [HttpPost]
         [ProducesResponseType((200), Type = typeof(MoradorVo))]
         [ProducesResponseType((400))]
