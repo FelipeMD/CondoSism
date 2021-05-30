@@ -26,14 +26,17 @@ namespace WebApplication1.Controllers
             _moradorService = moradorService;
         }
         
-        [HttpGet]
+        [HttpGet("{sortDirection}/{pageSize}/{page}")]
         [ProducesResponseType((200), Type = typeof(List<MoradorVo>))]
         [ProducesResponseType((400))]
         [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Get()
+        public IActionResult FindByPaginado([FromQuery] string name, 
+            string sortDirection, 
+            int pageSize, 
+            int page)
         {
-            return Ok(_moradorService.FindAll());
+            return Ok(_moradorService.FindWithPagedSearch(name, sortDirection, pageSize, page));
         }
         
         [HttpGet("{id}")]

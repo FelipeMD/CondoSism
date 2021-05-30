@@ -3,6 +3,7 @@ using WebApplication1.Data.Converter.Implementations;
 using WebApplication1.Data.ValueObjetcs;
 using WebApplication1.Domain.Generics;
 using WebApplication1.Domain.Moradores.Interfaces;
+using WebApplication1.Hypermedia.Utils;
 using WebApplication1.Infrastructure.Repositories;
 
 namespace WebApplication1.Domain.Moradores
@@ -20,6 +21,39 @@ namespace WebApplication1.Domain.Moradores
         public List<MoradorVo> FindAll()
         {
             return _converter.Parse(_repository.FindAll());
+        }
+
+        public PagedSearchVo<MoradorVo> FindWithPagedSearch(string name, string sortDirection, int pageSize, int page)
+        {
+            var sort = (!string.IsNullOrWhiteSpace(sortDirection) 
+                        && !sortDirection.Equals("desc")) ? "asc" : "desc";
+            var size = (pageSize < 1) ? 10 : pageSize;
+            var offset = page > 0 ? (page - 1) * size : 0;
+
+            string query = @"select * from morador m where 1 = 1";
+
+            if (!string.IsNullOrWhiteSpace(name)) query = query + $"  and m.nome like '%{name}'  ";
+            
+            query += $" order by m.nome {sort} limit {size} offset {offset}";
+
+            var moradores = _repository.FindWitchPagedSearch(query);
+
+            string countQuery = @"select count(*) from morador m where 1 = 1 ";
+            
+            if (!string.IsNullOrWhiteSpace(name)) countQuery = countQuery + $"  and m.name like '%{name}'  ";
+            
+            
+            int totalresults = _repository.GetCount(countQuery);
+            
+            
+            return new PagedSearchVo<MoradorVo>
+            {
+                CurrentPage = page,
+                List = _converter.Parse(moradores),
+                PageSize = size,
+                SortDirections = sort,
+                TotalResults = totalresults
+            };
         }
 
         public MoradorVo FindById(long id)

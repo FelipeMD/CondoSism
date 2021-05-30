@@ -11,5 +11,8 @@ namespace WebApplication1.Domain.Generics
         T Update(T item);
         void Delete(long id);
         bool Exists(long id);
+        
+        List<T> FindWitchPagedSearch(string query);
+        int GetCount(string query);
     }
 }
