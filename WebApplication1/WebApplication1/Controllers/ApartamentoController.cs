@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplication1.Data.ValueObjetcs;
@@ -9,6 +10,7 @@ using WebApplication1.Hypermedia.Filters;
 namespace WebApplication1.Controllers
 {
     [ApiController]
+    [Authorize("Bearer")]
     [Route("api/[controller]")]
     public class ApartamentoController : ControllerBase
     {
