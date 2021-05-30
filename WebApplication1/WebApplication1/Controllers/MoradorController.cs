@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using WebApplication1.Data.ValueObjetcs;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
@@ -12,6 +13,7 @@ using WebApplication1.Hypermedia.Filters;
 namespace WebApplication1.Controllers
 {
     [ApiController]
+    [Authorize("Bearer")]
     [Route("api/[controller]")]
     public class MoradorController : ControllerBase
     {

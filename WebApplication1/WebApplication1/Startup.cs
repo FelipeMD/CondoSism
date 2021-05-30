@@ -1,42 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Rewrite;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
+using WebApplication1.Domain.Generics;
+using WebApplication1.Domain.Logins;
+using WebApplication1.Domain.Logins.Interfaces;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
+using WebApplication1.Domain.Users.Interfaces;
 using WebApplication1.Hypermedia.Enricher;
 using WebApplication1.Hypermedia.Filters;
-using WebApplication1.Infrastructure.Generic;
+using WebApplication1.Infrastructure.Configurations;
+using WebApplication1.Infrastructure.Repositories;
+using WebApplication1.Infrastructure.Services;
+using WebApplication1.Infrastructure.Services.Interfaces;
 
 namespace WebApplication1
 {
     public class Startup
     {
-        public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
             Environment = environment;
 
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.Console().CreateLogger();
+                .WriteTo.Console()
+                .CreateLogger();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var tokenConfigurations = new TokenConfiguration();
+
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(
+                    Configuration.GetSection("TokenConfigurations")
+                )
+                .Configure(tokenConfigurations);
+
+            services.AddSingleton(tokenConfigurations);
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = tokenConfigurations.Issuer,
+                    ValidAudience = tokenConfigurations.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Secret))
+                };
+            });
+
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build());
+            });
+
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
+
+            services.AddControllers();
+
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
             
@@ -44,54 +101,49 @@ namespace WebApplication1
             {
                 MigrateDatabase(connection);
             }
-            
-            /*Exibe como XML*/
+
             services.AddMvc(options =>
             {
                 options.RespectBrowserAcceptHeader = true;
-            
-                options.FormatterMappings.SetMediaTypeMappingForFormat("xml",
-                    MediaTypeHeaderValue.Parse("application/xml"));
-                options.FormatterMappings.SetMediaTypeMappingForFormat("json",
-                    MediaTypeHeaderValue.Parse("application/jason"));
-            }).AddXmlDataContractSerializerFormatters();
+
+                options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+                options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+            })
+            .AddXmlSerializerFormatters();
 
             var filterOptions = new HyperMediaFilterOptions();
-            filterOptions.ContentResponseEnricherList.Add(new MoradorEnricher());
             filterOptions.ContentResponseEnricherList.Add(new ApartamentoEnricher());
-            
+            filterOptions.ContentResponseEnricherList.Add(new MoradorEnricher());
+
             services.AddSingleton(filterOptions);
 
-            services.AddSwaggerGen(c =>
-            {
+            services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "REST API's using Azure with AST.NET Core 5 and Docker",
+                        Title = "REST API's From 0 to Azure with ASP.NET Core 5 and Docker",
                         Version = "v1",
-                        Description = "API RESTful developed in 'REST API's using Azure with AST.NET Core 5 and Docker'",
+                        Description = "API RESTful developed in course 'REST API's From 0 to Azure with ASP.NET Core 5 and Docker'",
                         Contact = new OpenApiContact
                         {
-                            Name = "Felipe Souza",
-                            Url = new Uri("https://github.com/FelipeMD")
+                            Name = "Leandro Costa",
+                            Url = new Uri("https://github.com/leandrocgsi")
                         }
                     });
             });
 
-            services.AddCors(options => options.AddDefaultPolicy(builder =>
-            {
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            }));
-            
-            services.AddControllers();
-            
-            services.AddScoped<IMoradorService, MoradorService>();
+            //Dependency Injection
             services.AddScoped<IApartamentoService, ApartamentoService>();
+            services.AddScoped<IMoradorService, MoradorService>();
+            services.AddScoped<ILoginService, LoginService>();
+
+            services.AddTransient<ITokenService, TokenService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -108,26 +160,24 @@ namespace WebApplication1
             app.UseCors();
 
             app.UseSwagger();
-            
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", 
-                    "REST API's using Azure with AST.NET Core 5 and Docker - v1");
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "REST API's From 0 to Azure with ASP.NET Core 5 and Docker - v1");
             });
 
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");
             app.UseRewriter(option);
-            
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id}");
+                endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
             });
         }
-
         private void MigrateDatabase(string connection)
         {
             try

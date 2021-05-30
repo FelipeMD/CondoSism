@@ -2,6 +2,7 @@
 using WebApplication1.Controllers;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Moradores;
+using WebApplication1.Domain.Users;
 
 namespace WebApplication1.Domain.Context
 {

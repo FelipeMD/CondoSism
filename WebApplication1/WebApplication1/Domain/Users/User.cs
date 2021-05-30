@@ -2,32 +2,32 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplication1.Controllers
+namespace WebApplication1.Domain.Users
 {
     [Table("users")]
     public class User
     {   
         [Key]
         [Column("id_user")]
-        public long idUser { get; set; }
+        public int idUser { get; set; }
         
         [Column("user_name")]
         public string UserName { get; set; }
         
-        [Column("password")]
-        public string fullName { get; set; }
+        [Column("full_name")]
+        public string FullName { get; set; }
         
-        [Column("phone")]
+        [Column("password")]
         public string Password { get; set; }
         
-        [Column("cpf")]
+        [Column("phone")]
         public string Phone { get; set; }
         
-        [Column("email")]
+        [Column("cpf")]
         public string Cpf { get; set; }
         
-        [Column("id_user")]
-        public string email { get; set; }
+        [Column("email")]
+        public string Email { get; set; }
         
         [Column("birth_date")]
         public DateTime BirthDate { get; set; }

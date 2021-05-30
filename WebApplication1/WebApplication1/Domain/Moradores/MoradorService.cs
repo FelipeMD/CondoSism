@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using WebApplication1.Data.Converter.Implementations;
 using WebApplication1.Data.ValueObjetcs;
+using WebApplication1.Domain.Generics;
 using WebApplication1.Domain.Moradores.Interfaces;
-using WebApplication1.Infrastructure.Generic;
+using WebApplication1.Infrastructure.Repositories;
 
 namespace WebApplication1.Domain.Moradores
 {

@@ -4,8 +4,9 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Domain.Base;
 using WebApplication1.Domain.Context;
+using WebApplication1.Domain.Generics;
 
-namespace WebApplication1.Infrastructure.Generic
+namespace WebApplication1.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
