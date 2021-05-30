@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using WebApplication1.Data.ValueObjetcs;
 
 namespace WebApplication1.Domain.Apartamentos.Interfaces
 {
     public interface IApartamentoService
     {
-        Apartamento Create(Apartamento apartamento);
-        Apartamento FindById(long id);
-        List<Apartamento> FindAll();
-        Apartamento Update(Apartamento apartamento);
+        ApartamentoVo Create(ApartamentoVo apartamento);
+        ApartamentoVo FindById(long id);
+        List<ApartamentoVo> FindAll();
+        ApartamentoVo Update(ApartamentoVo apartamento);
         void Delete(long id);
     }
 }

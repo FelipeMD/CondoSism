@@ -1,0 +1,6 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a5488286_002D7495_002D4552_002D8f8f_002Dd22692f61795/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="InserindoDadosValidos_MoradorCadastradoSucesso" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::FDE6E153-B358-44FB-A816-5060008E7D08::net5.0::TestProject1.Tests.MoradorUnitTests.InserindoDadosValidos_MoradorCadastradoSucesso&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -1,38 +1,49 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
+using WebApplication1.Data.Converter.Implementations;
+using WebApplication1.Data.ValueObjetcs;
 using WebApplication1.Domain.Apartamentos.Interfaces;
+using WebApplication1.Domain.Generics;
 using WebApplication1.Domain.Moradores;
-using WebApplication1.Infrastructure.Repository;
+using WebApplication1.Infrastructure.Repositories;
 
 namespace WebApplication1.Domain.Apartamentos
 {
     public class ApartamentoService : IApartamentoService
     {
-        private readonly IApartamentoRepository _repository;
-
-        public ApartamentoService(IApartamentoRepository repository)
+        private readonly IRepository<Apartamento> _repository;
+        private readonly ApartamentoConverter _converter;
+        public ApartamentoService(IRepository<Apartamento> repository)
         {
             _repository = repository;
-        }
-
-        public Apartamento FindById(long id)
-        {
-            return _repository.FindById(id);
-        }
-
-        public List<Apartamento> FindAll()
-        {
-            return _repository.FindAll();
+            _converter = new ApartamentoConverter();
         }
         
-        public Apartamento Create(Apartamento apartamento)
+        public List<ApartamentoVo> FindAll()
         {
-            return _repository.Create(apartamento);
+            return _converter.Parse(_repository.FindAll());
+        }
+
+        public ApartamentoVo FindById(long id)
+        {
+            return _converter.Parse(_repository.FindById(id));
         }
         
-        public Apartamento Update(Apartamento apartamento)
+        
+        public ApartamentoVo Create(ApartamentoVo apartamento)
         {
-            return _repository.Update(apartamento);
+            var apartamentoEntity = _converter.Parse(apartamento);
+            apartamentoEntity = _repository.Create(apartamentoEntity);
+
+            return _converter.Parse(apartamentoEntity);
+        }
+        
+        public ApartamentoVo Update(ApartamentoVo apartamento)
+        {
+            var apartamentoEntity = _converter.Parse(apartamento);
+            apartamentoEntity = _repository.Update(apartamentoEntity);
+
+            return _converter.Parse(apartamentoEntity);
         }
 
         public void Delete(long id)
