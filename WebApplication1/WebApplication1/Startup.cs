@@ -5,19 +5,31 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using WebApplication1.Configurations;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
+using WebApplication1.Domain.Login;
+using WebApplication1.Domain.Login.Interfaces;
 using WebApplication1.Domain.Moradores;
 using WebApplication1.Domain.Moradores.Interfaces;
+using WebApplication1.Domain.Users.Interfaces;
 using WebApplication1.Hypermedia.Enricher;
 using WebApplication1.Hypermedia.Filters;
+using WebApplication1.Infrastructure;
 using WebApplication1.Infrastructure.Generic;
+using WebApplication1.Services;
+using WebApplication1.Services.Implementations;
 
 namespace WebApplication1
 {
@@ -37,6 +49,48 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var tokenConfigurations = new TokenConfiguration();
+
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(
+                Configuration.GetSection("TokenConfigurations")).Configure(tokenConfigurations);
+
+            services.AddSingleton(tokenConfigurations);
+
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = tokenConfigurations.Issuer,
+                        ValidAudience = tokenConfigurations.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Secret))
+                    };
+                });
+
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser()
+                    .Build());
+            });
+            
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+            
+            services.AddControllers();
+            
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
             
@@ -78,17 +132,14 @@ namespace WebApplication1
                     });
             });
 
-            services.AddCors(options => options.AddDefaultPolicy(builder =>
-            {
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            }));
-            
-            services.AddControllers();
-            
             services.AddScoped<IMoradorService, MoradorService>();
             services.AddScoped<IApartamentoService, ApartamentoService>();
+            
+            services.AddScoped<ILoginService, LoginService>();
+            
+            services.AddTransient<ITokenService, TokenService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
