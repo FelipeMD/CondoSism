@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
@@ -19,6 +21,8 @@ using WebApplication1.Configurations;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
+using WebApplication1.Domain.Files;
+using WebApplication1.Domain.Files.Interfaces;
 using WebApplication1.Domain.Generics;
 using WebApplication1.Domain.Login;
 using WebApplication1.Domain.Login.Interfaces;
@@ -133,10 +137,13 @@ namespace WebApplication1
                     });
             });
 
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
             services.AddScoped<IMoradorService, MoradorService>();
             services.AddScoped<IApartamentoService, ApartamentoService>();
             
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IFileService, FileService>();
             
             services.AddTransient<ITokenService, TokenService>();
 
