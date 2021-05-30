@@ -15,6 +15,7 @@ namespace WebApplication1.Data.ValueObjetcs
         public string Telefone { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
+        public bool Enabled { get; set; }
         
         public List<HyperMediaLink> Links { get; set; } = new List<HyperMediaLink>();
     }

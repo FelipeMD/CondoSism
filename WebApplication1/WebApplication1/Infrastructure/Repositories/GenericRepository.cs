@@ -10,7 +10,7 @@ namespace WebApplication1.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private MySqlContext _context;
+        protected MySqlContext _context;
 
         private DbSet<T> dataset;
         
@@ -88,5 +88,24 @@ namespace WebApplication1.Infrastructure.Repositories
             return dataset.Any(m => m.Id.Equals(id));
         }
 
+        public List<T> FindWitchPagedSearch(string query)
+        {
+            return dataset.FromSqlRaw<T>(query).ToList();
+        }
+
+        public int GetCount(string query)
+        {
+            var result = "";
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+                    result = command.ExecuteScalar().ToString();
+                }
+            }
+            return int.Parse(result);
+        }
     }
 }

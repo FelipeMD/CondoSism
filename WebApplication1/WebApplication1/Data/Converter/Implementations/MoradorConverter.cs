@@ -19,7 +19,8 @@ namespace WebApplication1.Data.Converter.Implementations
                 DataNasciment = origin.DataNasciment,
                 Telefone = origin.Telefone,
                 Cpf = origin.Cpf,
-                Email = origin.Email
+                Email = origin.Email,
+                Enabled = origin.Enabled
             };
         }
         
@@ -34,7 +35,8 @@ namespace WebApplication1.Data.Converter.Implementations
                 DataNasciment = origin.DataNasciment,
                 Telefone = origin.Telefone,
                 Cpf = origin.Cpf,
-                Email = origin.Email
+                Email = origin.Email,
+                Enabled = origin.Enabled
             };
         }
         

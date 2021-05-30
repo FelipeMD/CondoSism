@@ -26,14 +26,17 @@ namespace WebApplication1.Controllers
             _moradorService = moradorService;
         }
         
-        [HttpGet]
+        [HttpGet("{sortDirection}/{pageSize}/{page}")]
         [ProducesResponseType((200), Type = typeof(List<MoradorVo>))]
         [ProducesResponseType((400))]
         [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Get()
+        public IActionResult FindByPaginado([FromQuery] string name, 
+            string sortDirection, 
+            int pageSize, 
+            int page)
         {
-            return Ok(_moradorService.FindAll());
+            return Ok(_moradorService.FindWithPagedSearch(name, sortDirection, pageSize, page));
         }
         
         [HttpGet("{id}")]
@@ -44,6 +47,18 @@ namespace WebApplication1.Controllers
         public IActionResult FindById(long id)
         {
             var morador = _moradorService.FindById(id);
+            if (morador == null) return NotFound();
+            return Ok(morador);
+        }
+        
+        [HttpGet("findMoradorByName")]
+        [ProducesResponseType((200), Type = typeof(MoradorVo))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult FindMoradorByName([FromQuery] string firstName, [FromQuery] string lastName)
+        {
+            var morador = _moradorService.FindByName(firstName, lastName);
             if (morador == null) return NotFound();
             return Ok(morador);
         }
@@ -68,6 +83,17 @@ namespace WebApplication1.Controllers
         {
             if (morador == null) return NotFound();
             return Ok(_moradorService.Update(morador));
+        }
+        
+        [HttpPatch("{id}")]
+        [ProducesResponseType((200), Type = typeof(MoradorVo))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Disable(long id)
+        {
+            var morador = _moradorService.Disable(id);
+            return Ok(morador);
         }
         
         [HttpDelete("{id}")]
