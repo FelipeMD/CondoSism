@@ -122,7 +122,7 @@ namespace WebApplication1
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "REST API's using Azure with AST.NET Core 5 and Docker",
+                        Title = "SistemaCondominio",
                         Version = "v1",
                         Description = "API RESTful developed in 'REST API's using Azure with AST.NET Core 5 and Docker'",
                         Contact = new OpenApiContact

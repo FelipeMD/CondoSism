@@ -25,5 +25,27 @@ namespace WebApplication1.Controllers
             if (token == null) return Unauthorized();
             return Ok(token);
         }
+
+        [HttpPost]
+        [Route("refresh")]
+        public IActionResult Refresh([FromBody] TokenVo tokenVo)
+        {
+            if (tokenVo == null) return BadRequest("Invalid client request");
+            var token = _loginService.ValidateCredentials(tokenVo);
+            if (token == null) return BadRequest("Invalid client request");
+            return Ok(token);
+        }
+        
+        [HttpGet]
+        [Route("revoke")]
+        [Authorize("Bearer")]
+        public IActionResult Revoke()
+        {
+            var username = User.Identity.Name;
+            var result = _loginService.RevokeToken(username);
+
+            if (!result) return BadRequest("Ivalid client request");
+            return NoContent();
+        }
     }
 }

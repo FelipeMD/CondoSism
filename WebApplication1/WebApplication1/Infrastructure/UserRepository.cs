@@ -24,7 +24,21 @@ namespace WebApplication1.Infrastructure
             return _context.Users.FirstOrDefault(u => (u.UserName == user.UserName) && (u.Password == pass));
         }
 
-        
+        public User ValidateCredentials(string userName)
+        {
+            return _context.Users.SingleOrDefault(u => u.UserName == userName);
+        }
+
+        public bool RevokeToken(string userName)
+        {
+            var user = _context.Users.SingleOrDefault(u => u.UserName == userName);
+            if (user is null) return false;
+            user.RefreshToken = null;
+            _context.SaveChanges();
+            return true;
+        }
+
+
         public User RefreshUserInfo(User user)
         {
             if (!_context.Users.Any(u => u.IdUser.Equals(user.IdUser))) return null;
