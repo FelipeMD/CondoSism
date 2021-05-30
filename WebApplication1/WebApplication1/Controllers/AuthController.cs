@@ -1,52 +1,29 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Data.ValueObjetcs;
-using WebApplication1.Domain.Logins.Interfaces;
+using WebApplication1.Domain.Login.Interfaces;
 
 namespace WebApplication1.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private ILoginService _loginBusiness;
+        private ILoginService _loginService;
 
-        public AuthController(ILoginService loginBusiness)
+        public AuthController(ILoginService loginService)
         {
-            _loginBusiness = loginBusiness;
+            _loginService = loginService;
         }
 
         [HttpPost]
         [Route("signin")]
         public IActionResult Signin([FromBody] UserVo user)
         {
-            if (user == null) return BadRequest("Ivalid client request");
-            var token = _loginBusiness.ValidateCredentials(user);
+            if (user == null) return BadRequest("Invalid client request");
+            var token = _loginService.ValidateCredentials(user);
             if (token == null) return Unauthorized();
             return Ok(token);
-        }
-
-        [HttpPost]
-        [Route("refresh")]
-        public IActionResult Refresh([FromBody] TokenVo tokenVo)
-        {
-            if (tokenVo is null) return BadRequest("Ivalid client request");
-            var token = _loginBusiness.ValidateCredentials(tokenVo);
-            if (token == null) return BadRequest("Ivalid client request");
-            return Ok(token);
-        }
-
-
-        [HttpGet]
-        [Route("revoke")]
-        [Authorize("Bearer")]
-        public IActionResult Revoke()
-        {
-            var username = User.Identity.Name;
-            var result = _loginBusiness.RevokeToken(username);
-
-            if (!result) return BadRequest("Ivalid client request");
-            return NoContent();
         }
     }
 }

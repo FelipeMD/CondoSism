@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fmcab\\Desktop\\projeto\\TestandoAPIs\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "C:\\Users\\fmcab\\Desktop\\CORRINDO ERROS\\SistemaCondominio\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fmcab\\Desktop\\projeto\\TestandoAPIs\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "C:\\Users\\fmcab\\Desktop\\CORRINDO ERROS\\SistemaCondominio\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fmcab\\Desktop\\projeto\\TestandoAPIs\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\fmcab\\Desktop\\CORRINDO ERROS\\SistemaCondominio\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\fmcab\\Desktop\\projeto\\TestandoAPIs\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "C:\\Users\\fmcab\\Desktop\\CORRINDO ERROS\\SistemaCondominio\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\fmcab\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fmcab\\Desktop\\projeto\\TestandoAPIs\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "C:\\Users\\fmcab\\Desktop\\CORRINDO ERROS\\SistemaCondominio\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,7 +50,7 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[5.0.6, )"
             },
             "Microsoft.AspNetCore.Mvc.Formatters.Xml": {
               "target": "Package",
@@ -59,6 +59,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.14, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",

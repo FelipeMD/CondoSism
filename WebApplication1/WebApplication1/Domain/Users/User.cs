@@ -9,7 +9,7 @@ namespace WebApplication1.Domain.Users
     {   
         [Key]
         [Column("id_user")]
-        public int idUser { get; set; }
+        public int IdUser { get; set; }
         
         [Column("user_name")]
         public string UserName { get; set; }
