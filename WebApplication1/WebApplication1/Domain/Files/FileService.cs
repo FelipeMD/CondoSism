@@ -23,12 +23,10 @@ namespace WebApplication1.Domain.Files
             FileDetailVo fileDetail = new FileDetailVo();
 
             var fileType = Path.GetExtension(file.FileName);
-
             var baseUrl = _context.HttpContext.Request.Host;
 
-            if (fileType.ToLower() == ".pdf" || fileType.ToLower() == ".jpg"
-                                             || fileType.ToLower() == ".png"
-                                             || fileType.ToLower() == ".jpeg")
+            if (fileType.ToLower() == ".pdf" || fileType.ToLower() == ".jpg" ||
+                fileType.ToLower() == ".png" || fileType.ToLower() == ".jpeg")
             {
                 var docName = Path.GetFileName(file.FileName);
                 if (file != null && file.Length > 0)
@@ -36,25 +34,32 @@ namespace WebApplication1.Domain.Files
                     var destination = Path.Combine(_basePath, "", docName);
                     fileDetail.DocName = docName;
                     fileDetail.DocType = fileType;
-                    fileDetail.DocUrl = Path.Combine(baseUrl + "\api\file" + fileDetail.DocName);
+                    fileDetail.DocUrl = Path.Combine(baseUrl + "/api/file/" + fileDetail.DocName);
 
                     using var stream = new FileStream(destination, FileMode.Create);
                     await file.CopyToAsync(stream);
                 }
             }
-            
             return fileDetail;
         }
 
         
         public byte[] GetFile(string fileName)
         {
-            throw new System.NotImplementedException();
+            var filePath = _basePath + fileName;
+            return File.ReadAllBytes(filePath);
         }
         
-        public Task<List<FileDetailVo>> SaveFileToDisk(IList<IFormFile> files)
-        {
-            throw new System.NotImplementedException();
+        public async Task<List<FileDetailVo>> SaveFilesToDisk(IList<IFormFile> files)
+        { 
+            List<FileDetailVo> list = new List<FileDetailVo>();
+
+            foreach (var file in files)
+            {
+                list.Add(await SaveFileToDisk(file));
+            }
+
+            return list;
         }
     }
 }

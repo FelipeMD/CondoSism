@@ -9,6 +9,6 @@ namespace WebApplication1.Domain.Files.Interfaces
     {
         public byte[] GetFile(string fileName);
         public Task<FileDetailVo> SaveFileToDisk(IFormFile file);
-        public Task<List<FileDetailVo>> SaveFileToDisk(IList<IFormFile> files);
+        public Task<List<FileDetailVo>> SaveFilesToDisk(IList<IFormFile> files);
     }
 }
