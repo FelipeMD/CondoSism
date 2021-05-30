@@ -20,7 +20,7 @@ namespace WebApplication1.Infrastructure
 
         public User ValidateCredentials(UserVo user)
         {
-            var pass = ComputHash(user.Password, new SHA1CryptoServiceProvider());
+            var pass = ComputHash(user.Password, new SHA256CryptoServiceProvider());
             return _context.Users.FirstOrDefault(u => (u.UserName == user.UserName) && (u.Password == pass));
         }
 
@@ -28,9 +28,6 @@ namespace WebApplication1.Infrastructure
         public User RefreshUserInfo(User user)
         {
             if (!_context.Users.Any(u => u.IdUser.Equals(user.IdUser))) return null;
-            {
-                
-            }
             var result = _context.Users.SingleOrDefault(u => u.IdUser.Equals(user.IdUser));
             if (result != null)
             {
@@ -60,7 +57,7 @@ namespace WebApplication1.Infrastructure
          * SE DER ERRO MUDAR DE STRING PRA OBJECT
          */
         
-        private string ComputHash(string input, SHA1CryptoServiceProvider algorithm)
+        private string ComputHash(string input, SHA256CryptoServiceProvider algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
             Byte[] hashedBytes = algorithm.ComputeHash(inputBytes);
