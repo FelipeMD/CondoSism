@@ -19,6 +19,7 @@ using WebApplication1.Configurations;
 using WebApplication1.Domain.Apartamentos;
 using WebApplication1.Domain.Apartamentos.Interfaces;
 using WebApplication1.Domain.Context;
+using WebApplication1.Domain.Generics;
 using WebApplication1.Domain.Login;
 using WebApplication1.Domain.Login.Interfaces;
 using WebApplication1.Domain.Moradores;
@@ -26,10 +27,10 @@ using WebApplication1.Domain.Moradores.Interfaces;
 using WebApplication1.Domain.Users.Interfaces;
 using WebApplication1.Hypermedia.Enricher;
 using WebApplication1.Hypermedia.Filters;
-using WebApplication1.Infrastructure;
-using WebApplication1.Infrastructure.Generic;
+using WebApplication1.Infrastructure.Repositories;
 using WebApplication1.Services;
 using WebApplication1.Services.Implementations;
+using UserRepository = WebApplication1.Infrastructure.UserRepository;
 
 namespace WebApplication1
 {
