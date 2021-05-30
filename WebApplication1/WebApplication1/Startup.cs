@@ -141,6 +141,7 @@ namespace WebApplication1
             services.AddTransient<ITokenService, TokenService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMoradorRepository, MoradorRepository>();
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }

@@ -70,6 +70,17 @@ namespace WebApplication1.Controllers
             return Ok(_moradorService.Update(morador));
         }
         
+        [HttpPatch("{id}")]
+        [ProducesResponseType((200), Type = typeof(MoradorVo))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Disable(long id)
+        {
+            var morador = _moradorService.Disable(id);
+            return Ok(morador);
+        }
+        
         [HttpDelete("{id}")]
         [ProducesResponseType((204))]
         [ProducesResponseType((400))]

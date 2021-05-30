@@ -9,9 +9,9 @@ namespace WebApplication1.Domain.Moradores
 {
     public class MoradorService : IMoradorService
     {
-        private readonly IRepository<Morador> _repository;
+        private readonly IMoradorRepository _repository;
         private readonly MoradorConverter _converter;
-        public MoradorService(IRepository<Morador> repository)
+        public MoradorService(IMoradorRepository repository)
         {
             _repository = repository;
             _converter = new MoradorConverter();
@@ -42,7 +42,13 @@ namespace WebApplication1.Domain.Moradores
 
             return _converter.Parse(moradorEntity);
         }
-        
+
+        public MoradorVo Disable(long id)
+        {
+            var personEntity = _repository.Disable(id);
+            return _converter.Parse(personEntity);
+        }
+
         public void Delete(long id)
         {
             _repository.Delete(id);

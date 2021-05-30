@@ -37,6 +37,13 @@ namespace WebApplication1.Hypermedia.Enricher
             });
             content.Links.Add(new HyperMediaLink()
             {
+                Action = HttpActionVerb.PATCH,
+                Href = link,
+                Rel = RelationType.self,
+                Type = ResponseTypeFormat.Defaultpatch
+            });
+            content.Links.Add(new HyperMediaLink()
+            {
                 Action = HttpActionVerb.DELETE,
                 Href = link,
                 Rel = RelationType.self,

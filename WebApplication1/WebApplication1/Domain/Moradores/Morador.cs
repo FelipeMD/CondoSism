@@ -25,5 +25,8 @@ namespace WebApplication1.Domain.Moradores
         
         [Column("email")]
         public string Email { get; set; }
+        
+        [Column("enabled")]
+        public bool Enabled { get; set; }
     }
 }
