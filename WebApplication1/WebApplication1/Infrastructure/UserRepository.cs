@@ -60,17 +60,6 @@ namespace WebApplication1.Infrastructure
             return result;
         }
         
-        
-        /*
-         *
-         *
-         *
-         *
-         *
-         *
-         * SE DER ERRO MUDAR DE STRING PRA OBJECT
-         */
-        
         private string ComputHash(string input, SHA256CryptoServiceProvider algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
