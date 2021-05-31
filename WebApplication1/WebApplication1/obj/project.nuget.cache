@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0wM7ZCZVcbDTPtp/2VHeFRM5xV9aawgrCEeKMaizoH7mnHB4x6KXyKZeJJAG+9Is6IMjgfpcUip158BDBB9itQ==",
+  "dgSpecHash": "sz7AVHjk1aMB7fM0Gfxqe3r7cW5oTTRc81DCWRZG2/YlQps/MEvo7eLlDf9vDBkAl7aWBTsa4aB6cat62voWTg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fmcab\\Desktop\\CORRINDO ERROS\\SistemaCondominio\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "E:\\projetos\\SistemaCondominio\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fmcab\\.nuget\\packages\\evolve\\3.1.0-alpha1\\evolve.3.1.0-alpha1.nupkg.sha512",
     "C:\\Users\\fmcab\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
