@@ -1,0 +1,2140 @@
+{
+	"info": {
+		"_postman_id": "4c48c67c-2f77-41b7-a32a-60ddd2a01160",
+		"name": "CondoSism",
+		"description": "# CondoSism\n# Name: Felipe Souza\n# GitHub: https://github.com/FelipeMD/CondoSism",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (responseCode.code >= 200 && responseCode.code <= 299) {\r",
+											"    var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"    postman.setEnvironmentVariable('accessToken', jsonData.accessToken);\r",
+											"    postman.setEnvironmentVariable('refreshToken', jsonData.refreshToken);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"username\": \"felipe\",\n   \"password\": \"admin123\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/signin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 35451412,\n \"numero\": 30412125,\n \"bloco\": \"ullamco repre\",\n \"links\": [\n  {\n   \"rel\": \"aute esse dolore\",\n   \"href\": \"nulla fugiat of\",\n   \"type\": \"proiden\",\n   \"action\": \"irure sunt enim\"\n  },\n  {\n   \"rel\": \"dolor laborum eiusmod occaecat\",\n   \"href\": \"Lorem dolor laboris ut\",\n   \"type\": \"aliqua cillum cons\",\n   \"action\": \"ipsum cillum\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Refresh Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (responseCode.code >= 200 && responseCode.code <= 299) {\r",
+											"    var jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"    postman.setEnvironmentVariable('accessToken', jsonData.accessToken);\r",
+											"    postman.setEnvironmentVariable('refreshToken', jsonData.refreshToken);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessToken\": \"{{accessToken}}\",\n    \"refreshToken\": \"{{refreshToken}}\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/refresh",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 35451412,\n \"numero\": 30412125,\n \"bloco\": \"ullamco repre\",\n \"links\": [\n  {\n   \"rel\": \"aute esse dolore\",\n   \"href\": \"nulla fugiat of\",\n   \"type\": \"proiden\",\n   \"action\": \"irure sunt enim\"\n  },\n  {\n   \"rel\": \"dolor laborum eiusmod occaecat\",\n   \"href\": \"Lorem dolor laboris ut\",\n   \"type\": \"aliqua cillum cons\",\n   \"action\": \"ipsum cillum\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						},
+						{
+							"name": "LogOut",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/revoke",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"revoke"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 35451412,\n \"numero\": 30412125,\n \"bloco\": \"ullamco repre\",\n \"links\": [\n  {\n   \"rel\": \"aute esse dolore\",\n   \"href\": \"nulla fugiat of\",\n   \"type\": \"proiden\",\n   \"action\": \"irure sunt enim\"\n  },\n  {\n   \"rel\": \"dolor laborum eiusmod occaecat\",\n   \"href\": \"Lorem dolor laboris ut\",\n   \"type\": \"aliqua cillum cons\",\n   \"action\": \"ipsum cillum\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Morador",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Busca Paginada",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador/asc/50/1?nome=c",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador",
+												"asc",
+												"50",
+												"1"
+											],
+											"query": [
+												{
+													"key": "nome",
+													"value": "c"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 27769421,\n \"primeiroNome\": \"aliqua mollit\",\n \"sobrenome\": \"officia cillum Ut\",\n \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n \"telefone\": \"e\",\n \"cpf\": \"laborum id enim aliqua\",\n \"email\": \"exercitation dolor pariatur incididunt\",\n \"links\": [\n  {\n   \"rel\": \"non cillum\",\n   \"href\": \"anim magna\",\n   \"type\": \"sit quis al\",\n   \"action\": \"et aliqua laboris eiusmod\"\n  },\n  {\n   \"rel\": \"do aliquip non ea ullamco\",\n   \"href\": \"culpa dolor\",\n   \"type\": \"est pariatur occaecat\",\n   \"action\": \"officia nostrud consequat\"\n  }\n ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Deletar Morador",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "3",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Desativar Morador",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 27769421,\n \"primeiroNome\": \"aliqua mollit\",\n \"sobrenome\": \"officia cillum Ut\",\n \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n \"telefone\": \"e\",\n \"cpf\": \"laborum id enim aliqua\",\n \"email\": \"exercitation dolor pariatur incididunt\",\n \"links\": [\n  {\n   \"rel\": \"non cillum\",\n   \"href\": \"anim magna\",\n   \"type\": \"sit quis al\",\n   \"action\": \"et aliqua laboris eiusmod\"\n  },\n  {\n   \"rel\": \"do aliquip non ea ullamco\",\n   \"href\": \"culpa dolor\",\n   \"type\": \"est pariatur occaecat\",\n   \"action\": \"officia nostrud consequat\"\n  }\n ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Morador/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Morador",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Cadastrar Morador",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 550,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Morador?",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Morador"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 27769421,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 27769421,\n \"primeiroNome\": \"aliqua mollit\",\n \"sobrenome\": \"officia cillum Ut\",\n \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n \"telefone\": \"e\",\n \"cpf\": \"laborum id enim aliqua\",\n \"email\": \"exercitation dolor pariatur incididunt\",\n \"links\": [\n  {\n   \"rel\": \"non cillum\",\n   \"href\": \"anim magna\",\n   \"type\": \"sit quis al\",\n   \"action\": \"et aliqua laboris eiusmod\"\n  },\n  {\n   \"rel\": \"do aliquip non ea ullamco\",\n   \"href\": \"culpa dolor\",\n   \"type\": \"est pariatur occaecat\",\n   \"action\": \"officia nostrud consequat\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 27769421,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 27769421,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Atualizar Morador",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 27769421,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Morador?",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Morador"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 27769421,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 27769421,\n \"primeiroNome\": \"aliqua mollit\",\n \"sobrenome\": \"officia cillum Ut\",\n \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n \"telefone\": \"e\",\n \"cpf\": \"laborum id enim aliqua\",\n \"email\": \"exercitation dolor pariatur incididunt\",\n \"links\": [\n  {\n   \"rel\": \"non cillum\",\n   \"href\": \"anim magna\",\n   \"type\": \"sit quis al\",\n   \"action\": \"et aliqua laboris eiusmod\"\n  },\n  {\n   \"rel\": \"do aliquip non ea ullamco\",\n   \"href\": \"culpa dolor\",\n   \"type\": \"est pariatur occaecat\",\n   \"action\": \"officia nostrud consequat\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 27769421,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 27769421,\n    \"primeiroNome\": \"aliqua mollit\",\n    \"sobrenome\": \"officia cillum Ut\",\n    \"dataNasciment\": \"1964-08-25T13:56:26.204Z\",\n    \"telefone\": \"e\",\n    \"cpf\": \"laborum id enim aliqua\",\n    \"email\": \"exercitation dolor pariatur incididunt\",\n    \"links\": [\n        {\n            \"rel\": \"non cillum\",\n            \"href\": \"anim magna\",\n            \"type\": \"sit quis al\",\n            \"action\": \"et aliqua laboris eiusmod\"\n        },\n        {\n            \"rel\": \"do aliquip non ea ullamco\",\n            \"href\": \"culpa dolor\",\n            \"type\": \"est pariatur occaecat\",\n            \"action\": \"officia nostrud consequat\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Apartamento",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Busca Apartamento pelo ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "",
+												"value": "",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Apartamento/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Apartamento",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 35451412,\n \"numero\": 30412125,\n \"bloco\": \"ullamco repre\",\n \"links\": [\n  {\n   \"rel\": \"aute esse dolore\",\n   \"href\": \"nulla fugiat of\",\n   \"type\": \"proiden\",\n   \"action\": \"irure sunt enim\"\n  },\n  {\n   \"rel\": \"dolor laborum eiusmod occaecat\",\n   \"href\": \"Lorem dolor laboris ut\",\n   \"type\": \"aliqua cillum cons\",\n   \"action\": \"ipsum cillum\"\n  }\n ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Apartamento/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Apartamento",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Apartamento/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Apartamento",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Deletar Apartamento",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Apartamento/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Apartamento",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Apartamento/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Apartamento",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Apartamento/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Apartamento",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Busca Lista de Apartamentos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Apartamento",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Apartamento"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 62576018,\n  \"numero\": -44758296,\n  \"bloco\": \"dolore reprehenderit\",\n  \"links\": [\n   {\n    \"rel\": \"ut sint veniam do\",\n    \"href\": \"enim reprehenderit aliquip\",\n    \"type\": \"ex mollit\",\n    \"action\": \"ut n\"\n   },\n   {\n    \"rel\": \"Duis dolor tempor\",\n    \"href\": \"elit officia non \",\n    \"type\": \"esse exercitation voluptate consequat\",\n    \"action\": \"id esse laborum\"\n   }\n  ]\n },\n {\n  \"id\": -2896720,\n  \"numero\": -48622932,\n  \"bloco\": \"ea in dolor mollit exercitation\",\n  \"links\": [\n   {\n    \"rel\": \"aliqu\",\n    \"href\": \"Lorem ullamco\",\n    \"type\": \"id aute\",\n    \"action\": \"proident ad magna et\"\n   },\n   {\n    \"rel\": \"enim consequat ullamco\",\n    \"href\": \"Duis aute eiusmod dolor\",\n    \"type\": \"deserunt minim\",\n    \"action\": \"non magna nostrud voluptate\"\n   }\n  ]\n }\n]"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Cadastra Novo Apartamento",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 44,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Apartamento",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Apartamento"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 35451412,\n \"numero\": 30412125,\n \"bloco\": \"ullamco repre\",\n \"links\": [\n  {\n   \"rel\": \"aute esse dolore\",\n   \"href\": \"nulla fugiat of\",\n   \"type\": \"proiden\",\n   \"action\": \"irure sunt enim\"\n  },\n  {\n   \"rel\": \"dolor laborum eiusmod occaecat\",\n   \"href\": \"Lorem dolor laboris ut\",\n   \"type\": \"aliqua cillum cons\",\n   \"action\": \"ipsum cillum\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Atualiza os Dados de Apartamento",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Apartamento",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Apartamento"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 35451412,\n \"numero\": 30412125,\n \"bloco\": \"ullamco repre\",\n \"links\": [\n  {\n   \"rel\": \"aute esse dolore\",\n   \"href\": \"nulla fugiat of\",\n   \"type\": \"proiden\",\n   \"action\": \"irure sunt enim\"\n  },\n  {\n   \"rel\": \"dolor laborum eiusmod occaecat\",\n   \"href\": \"Lorem dolor laboris ut\",\n   \"type\": \"aliqua cillum cons\",\n   \"action\": \"ipsum cillum\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 35451412,\n    \"numero\": 30412125,\n    \"bloco\": \"ullamco repre\",\n    \"links\": [\n        {\n            \"rel\": \"aute esse dolore\",\n            \"href\": \"nulla fugiat of\",\n            \"type\": \"proiden\",\n            \"action\": \"irure sunt enim\"\n        },\n        {\n            \"rel\": \"dolor laborum eiusmod occaecat\",\n            \"href\": \"Lorem dolor laboris ut\",\n            \"type\": \"aliqua cillum cons\",\n            \"action\": \"ipsum cillum\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Apartamento",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Apartamento"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "File",
+					"item": [
+						{
+							"name": "UpLoad de Arquivo",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/File/uploadFile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"File",
+										"uploadFile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 61889627,\n  \"primeiroNome\": \"eu veniam minim\",\n  \"sobrenome\": \"ex Duis\",\n  \"dataNasciment\": \"1987-03-22T23:08:05.191Z\",\n  \"telefone\": \"nulla\",\n  \"cpf\": \"ullamco quis qui\",\n  \"email\": \"nisi\",\n  \"links\": [\n   {\n    \"rel\": \"Duis ut fugiat\",\n    \"href\": \"et dol\",\n    \"type\": \"ex Lorem consectetur et\",\n    \"action\": \"commodo Lorem\"\n   },\n   {\n    \"rel\": \"velit nostrud\",\n    \"href\": \"nisi amet e\",\n    \"type\": \"sed cupidatat nos\",\n    \"action\": \"esse nostrud culpa\"\n   }\n  ]\n },\n {\n  \"id\": -38084157,\n  \"primeiroNome\": \"anim\",\n  \"sobrenome\": \"fugiat veniam sunt\",\n  \"dataNasciment\": \"1965-05-06T09:11:48.543Z\",\n  \"telefone\": \"aliquip irure\",\n  \"cpf\": \"dolore culpa proident ullamco\",\n  \"email\": \"aute mollit aliqua deserunt\",\n  \"links\": [\n   {\n    \"rel\": \"eu culpa\",\n    \"href\": \"id nostrud\",\n    \"type\": \"culpa eiusmod sint\",\n    \"action\": \"incididunt cupidatat eiusmod\"\n   },\n   {\n    \"rel\": \"anim qui ut Duis\",\n    \"href\": \"aliquip\",\n    \"type\": \"officia fugiat esse incididunt\",\n    \"action\": \"ipsum nulla in sit\"\n   }\n  ]\n }\n]"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						},
+						{
+							"name": "UpLoad de Arquivos",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/File/uploadFiles",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"File",
+										"uploadFiles"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 61889627,\n  \"primeiroNome\": \"eu veniam minim\",\n  \"sobrenome\": \"ex Duis\",\n  \"dataNasciment\": \"1987-03-22T23:08:05.191Z\",\n  \"telefone\": \"nulla\",\n  \"cpf\": \"ullamco quis qui\",\n  \"email\": \"nisi\",\n  \"links\": [\n   {\n    \"rel\": \"Duis ut fugiat\",\n    \"href\": \"et dol\",\n    \"type\": \"ex Lorem consectetur et\",\n    \"action\": \"commodo Lorem\"\n   },\n   {\n    \"rel\": \"velit nostrud\",\n    \"href\": \"nisi amet e\",\n    \"type\": \"sed cupidatat nos\",\n    \"action\": \"esse nostrud culpa\"\n   }\n  ]\n },\n {\n  \"id\": -38084157,\n  \"primeiroNome\": \"anim\",\n  \"sobrenome\": \"fugiat veniam sunt\",\n  \"dataNasciment\": \"1965-05-06T09:11:48.543Z\",\n  \"telefone\": \"aliquip irure\",\n  \"cpf\": \"dolore culpa proident ullamco\",\n  \"email\": \"aute mollit aliqua deserunt\",\n  \"links\": [\n   {\n    \"rel\": \"eu culpa\",\n    \"href\": \"id nostrud\",\n    \"type\": \"culpa eiusmod sint\",\n    \"action\": \"incididunt cupidatat eiusmod\"\n   },\n   {\n    \"rel\": \"anim qui ut Duis\",\n    \"href\": \"aliquip\",\n    \"type\": \"officia fugiat esse incididunt\",\n    \"action\": \"ipsum nulla in sit\"\n   }\n  ]\n }\n]"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						},
+						{
+							"name": "DownLoad de Arquivo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/File/downloadFile/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"File",
+										"downloadFile",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 61889627,\n  \"primeiroNome\": \"eu veniam minim\",\n  \"sobrenome\": \"ex Duis\",\n  \"dataNasciment\": \"1987-03-22T23:08:05.191Z\",\n  \"telefone\": \"nulla\",\n  \"cpf\": \"ullamco quis qui\",\n  \"email\": \"nisi\",\n  \"links\": [\n   {\n    \"rel\": \"Duis ut fugiat\",\n    \"href\": \"et dol\",\n    \"type\": \"ex Lorem consectetur et\",\n    \"action\": \"commodo Lorem\"\n   },\n   {\n    \"rel\": \"velit nostrud\",\n    \"href\": \"nisi amet e\",\n    \"type\": \"sed cupidatat nos\",\n    \"action\": \"esse nostrud culpa\"\n   }\n  ]\n },\n {\n  \"id\": -38084157,\n  \"primeiroNome\": \"anim\",\n  \"sobrenome\": \"fugiat veniam sunt\",\n  \"dataNasciment\": \"1965-05-06T09:11:48.543Z\",\n  \"telefone\": \"aliquip irure\",\n  \"cpf\": \"dolore culpa proident ullamco\",\n  \"email\": \"aute mollit aliqua deserunt\",\n  \"links\": [\n   {\n    \"rel\": \"eu culpa\",\n    \"href\": \"id nostrud\",\n    \"type\": \"culpa eiusmod sint\",\n    \"action\": \"incididunt cupidatat eiusmod\"\n   },\n   {\n    \"rel\": \"anim qui ut Duis\",\n    \"href\": \"aliquip\",\n    \"type\": \"officia fugiat esse incididunt\",\n    \"action\": \"ipsum nulla in sit\"\n   }\n  ]\n }\n]"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Morador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Morador"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"fugiat enim\",\n \"title\": \"aliqua\",\n \"status\": 37737245,\n \"detail\": \"adipisicing dolore\",\n \"instance\": \"incididunt Lorem culpa cupidatat\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"id": "55891dd2-5a2b-46c2-993d-98ea9252b281",
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
