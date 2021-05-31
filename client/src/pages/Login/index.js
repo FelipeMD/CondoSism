@@ -9,7 +9,7 @@ export default function Login() {
     return (
         <div className="logint-container">
             <section className="form">
-                <img src={logoImage}/>
+                <img src={logoImage} alt="logo"/>
                 <form>
                     <h1>Acesse sua conta</h1>
                     <input placeholder="Usuario" />
