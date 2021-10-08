@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sz7AVHjk1aMB7fM0Gfxqe3r7cW5oTTRc81DCWRZG2/YlQps/MEvo7eLlDf9vDBkAl7aWBTsa4aB6cat62voWTg==",
+  "dgSpecHash": "5XNMNeJdfKoMMOtaD8lsB8VlZBYxagqBFhNpha3Ycf59uPigZbDW+SCczUR0tYZ1qCBvnro5nSU+AzsArqdKJw==",
   "success": true,
-  "projectFilePath": "E:\\projetos\\SistemaCondominio\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fmcab\\.nuget\\packages\\evolve\\3.1.0-alpha1\\evolve.3.1.0-alpha1.nupkg.sha512",
     "C:\\Users\\fmcab\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
@@ -68,6 +68,7 @@
     "C:\\Users\\fmcab\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\fmcab\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\fmcab\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\fmcab\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512",
     "C:\\Users\\fmcab\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\5.0.2\\microsoft.visualstudio.web.codegeneration.5.0.2.nupkg.sha512",
     "C:\\Users\\fmcab\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\5.0.2\\microsoft.visualstudio.web.codegeneration.contracts.5.0.2.nupkg.sha512",
     "C:\\Users\\fmcab\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\5.0.2\\microsoft.visualstudio.web.codegeneration.core.5.0.2.nupkg.sha512",
