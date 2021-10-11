@@ -99,10 +99,10 @@ namespace WebApplication1
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
             
-            if (Environment.IsDevelopment())
-            {
-                MigrateDatabase(connection);
-            }
+            // if (Environment.IsDevelopment())
+            // {
+            //     MigrateDatabase(connection);
+            // }
             
             /*Exibe como XML*/
             services.AddMvc(options =>
