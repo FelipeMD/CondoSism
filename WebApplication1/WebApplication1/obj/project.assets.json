@@ -1,8 +1,8 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
-      "Evolve/3.1.0-alpha1": {
+    "net6.0": {
+      "Evolve/3.1.0-alpha2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Evolve.dll": {}
@@ -1366,16 +1366,16 @@
           }
         }
       },
-      "Serilog/2.10.1-dev-01308": {
+      "Serilog/2.11.0-dev-01371": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.1/Serilog.dll": {}
+          "lib/net5.0/Serilog.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Serilog.dll": {}
+          "lib/net5.0/Serilog.dll": {}
         }
       },
-      "Serilog.AspNetCore/4.1.1-dev-00227": {
+      "Serilog.AspNetCore/4.1.1-dev-00241": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "5.0.0",
@@ -1453,16 +1453,16 @@
           "lib/netstandard2.0/Serilog.Settings.Configuration.dll": {}
         }
       },
-      "Serilog.Sinks.Console/4.0.0-dev-00839": {
+      "Serilog.Sinks.Console/4.0.1-dev-00879": {
         "type": "package",
         "dependencies": {
-          "Serilog": "2.8.0"
+          "Serilog": "2.10.0"
         },
         "compile": {
-          "lib/netcoreapp2.0/Serilog.Sinks.Console.dll": {}
+          "lib/net5.0/Serilog.Sinks.Console.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp2.0/Serilog.Sinks.Console.dll": {}
+          "lib/net5.0/Serilog.Sinks.Console.dll": {}
         }
       },
       "Serilog.Sinks.Debug/2.0.0": {
@@ -2678,14 +2678,14 @@
     }
   },
   "libraries": {
-    "Evolve/3.1.0-alpha1": {
-      "sha512": "ZsJEg+CfKh27pejEBDlnMpUNzlr5rYt7Z/6aQYj/tf7At0KegM0bfFZGCzo6ig8KhotmrIhAGq/RoNuAV30HsQ==",
+    "Evolve/3.1.0-alpha2": {
+      "sha512": "jPdlnHG4gtx6pIHmvbItCim8QPjPGIbxQh9KhwV/qHMKOz/VqVfzLRyP5dpqYvN13ev9VKmEDA4WqhOdTviAow==",
       "type": "package",
-      "path": "evolve/3.1.0-alpha1",
+      "path": "evolve/3.1.0-alpha2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "evolve.3.1.0-alpha1.nupkg.sha512",
+        "evolve.3.1.0-alpha2.nupkg.sha512",
         "evolve.nuspec",
         "lib/netstandard2.0/Evolve.dll",
         "lib/netstandard2.0/Evolve.pdb"
@@ -4700,10 +4700,10 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "Serilog/2.10.1-dev-01308": {
-      "sha512": "/DBKJNLyllp71P5EngQzzG6+OtXurc+UlQPuZC+PvtcSkdsCsUETcuNnoy7LPDH0/jF0Wl5ES1KgWfH4OX60rA==",
+    "Serilog/2.11.0-dev-01371": {
+      "sha512": "zbC6ngX1oTIhvWVotRGZzRJNyfu+Qyij3j1JN1efIukvyn7nkmjT+FYpFxvD0nveUqugCrSmvnVe6sInx4oDqw==",
       "type": "package",
-      "path": "serilog/2.10.1-dev-01308",
+      "path": "serilog/2.11.0-dev-01371",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4712,6 +4712,8 @@
         "lib/net45/Serilog.xml",
         "lib/net46/Serilog.dll",
         "lib/net46/Serilog.xml",
+        "lib/net5.0/Serilog.dll",
+        "lib/net5.0/Serilog.xml",
         "lib/netstandard1.0/Serilog.dll",
         "lib/netstandard1.0/Serilog.xml",
         "lib/netstandard1.3/Serilog.dll",
@@ -4720,14 +4722,14 @@
         "lib/netstandard2.0/Serilog.xml",
         "lib/netstandard2.1/Serilog.dll",
         "lib/netstandard2.1/Serilog.xml",
-        "serilog.2.10.1-dev-01308.nupkg.sha512",
+        "serilog.2.11.0-dev-01371.nupkg.sha512",
         "serilog.nuspec"
       ]
     },
-    "Serilog.AspNetCore/4.1.1-dev-00227": {
-      "sha512": "SzuwuRK4hy875nGHc1Q2GsrpzhDIxttil+kpFppkuGKjA8ANDTvJhOlSjciO8rURfnLxT9p5CAFO4qHderYNWw==",
+    "Serilog.AspNetCore/4.1.1-dev-00241": {
+      "sha512": "+wG9HSLUQoiYjZ+0cVLN+mBYx0cItlHVks6qurceUSAWujvEhqAAEiCG7ZPQxPCJNhRqUW4zBp4J1gAvwEX+5g==",
       "type": "package",
-      "path": "serilog.aspnetcore/4.1.1-dev-00227",
+      "path": "serilog.aspnetcore/4.1.1-dev-00241",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4740,7 +4742,7 @@
         "lib/netstandard2.0/Serilog.AspNetCore.xml",
         "lib/netstandard2.1/Serilog.AspNetCore.dll",
         "lib/netstandard2.1/Serilog.AspNetCore.xml",
-        "serilog.aspnetcore.4.1.1-dev-00227.nupkg.sha512",
+        "serilog.aspnetcore.4.1.1-dev-00241.nupkg.sha512",
         "serilog.aspnetcore.nuspec"
       ]
     },
@@ -4807,24 +4809,23 @@
         "serilog.settings.configuration.nuspec"
       ]
     },
-    "Serilog.Sinks.Console/4.0.0-dev-00839": {
-      "sha512": "ZFk+UZKpkuApcs1peDfqtG7Y/3ksiv6y0b0KZSaDTUNSiYPZBEVSUC2ZH7Ib9SweU6I4Vwm8+666PUmkoVaVhQ==",
+    "Serilog.Sinks.Console/4.0.1-dev-00879": {
+      "sha512": "ldwBiwLTXQdb8xQHhpMJ4wr5vqOsY5GaGH9AcLKBlqouKeMFklkdKB8dqLlNL/oXs1vzirGFNHIYC5gv0QeKBw==",
       "type": "package",
-      "path": "serilog.sinks.console/4.0.0-dev-00839",
+      "path": "serilog.sinks.console/4.0.1-dev-00879",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "icon.png",
         "lib/net45/Serilog.Sinks.Console.dll",
         "lib/net45/Serilog.Sinks.Console.xml",
-        "lib/netcoreapp1.1/Serilog.Sinks.Console.dll",
-        "lib/netcoreapp1.1/Serilog.Sinks.Console.xml",
-        "lib/netcoreapp2.0/Serilog.Sinks.Console.dll",
-        "lib/netcoreapp2.0/Serilog.Sinks.Console.xml",
+        "lib/net5.0/Serilog.Sinks.Console.dll",
+        "lib/net5.0/Serilog.Sinks.Console.xml",
         "lib/netstandard1.3/Serilog.Sinks.Console.dll",
         "lib/netstandard1.3/Serilog.Sinks.Console.xml",
         "lib/netstandard2.0/Serilog.Sinks.Console.dll",
         "lib/netstandard2.0/Serilog.Sinks.Console.xml",
-        "serilog.sinks.console.4.0.0-dev-00839.nupkg.sha512",
+        "serilog.sinks.console.4.0.1-dev-00879.nupkg.sha512",
         "serilog.sinks.console.nuspec"
       ]
     },
@@ -8404,43 +8405,43 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
-      "Evolve >= 3.1.0-alpha1",
+    "net6.0": [
+      "Evolve >= 3.1.0-alpha2",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.6",
       "Microsoft.AspNetCore.Mvc.Formatters.Xml >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 3.1.14",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
       "Pomelo.EntityFrameworkCore.MySql >= 3.2.5",
-      "Serilog >= 2.10.1-dev-01308",
-      "Serilog.AspNetCore >= 4.1.1-dev-00227",
-      "Serilog.Sinks.Console >= 4.0.0-dev-00839",
+      "Serilog >= 2.11.0-dev-01371",
+      "Serilog.AspNetCore >= 4.1.1-dev-00241",
+      "Serilog.Sinks.Console >= 4.0.1-dev-00879",
       "Swashbuckle.AspNetCore >= 6.1.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\fmcab\\.nuget\\packages\\": {}
+    "C:\\Users\\Felipe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-      "packagesPath": "C:\\Users\\fmcab\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\obj\\",
+      "projectPath": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\fmcab\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {}
         }
       },
@@ -8451,12 +8452,12 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "Evolve": {
             "target": "Package",
-            "version": "[3.1.0-alpha1, )"
+            "version": "[3.1.0-alpha2, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
@@ -8480,15 +8481,15 @@
           },
           "Serilog": {
             "target": "Package",
-            "version": "[2.10.1-dev-01308, )"
+            "version": "[2.11.0-dev-01371, )"
           },
           "Serilog.AspNetCore": {
             "target": "Package",
-            "version": "[4.1.1-dev-00227, )"
+            "version": "[4.1.1-dev-00241, )"
           },
           "Serilog.Sinks.Console": {
             "target": "Package",
-            "version": "[4.0.0-dev-00839, )"
+            "version": "[4.0.1-dev-00879, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
@@ -8513,7 +8514,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Felipe\\.dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

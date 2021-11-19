@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-        "packagesPath": "C:\\Users\\fmcab\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fmcab\\Desktop\\git\\CondoSism\\WebApplication1\\WebApplication1\\obj\\",
+        "projectPath": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\fmcab\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -35,12 +35,12 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Evolve": {
               "target": "Package",
-              "version": "[3.1.0-alpha1, )"
+              "version": "[3.1.0-alpha2, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -64,15 +64,15 @@
             },
             "Serilog": {
               "target": "Package",
-              "version": "[2.10.1-dev-01308, )"
+              "version": "[2.11.0-dev-01371, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
-              "version": "[4.1.1-dev-00227, )"
+              "version": "[4.1.1-dev-00241, )"
             },
             "Serilog.Sinks.Console": {
               "target": "Package",
-              "version": "[4.0.0-dev-00839, )"
+              "version": "[4.0.1-dev-00879, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -97,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Felipe\\.dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
