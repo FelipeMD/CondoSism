@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "E:\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "E:\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "E:\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "E:\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Felipe\\Documents\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "E:\\Projetos\\CondoSism\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net5.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -35,8 +35,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Evolve": {
               "target": "Package",
@@ -97,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Felipe\\.dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
