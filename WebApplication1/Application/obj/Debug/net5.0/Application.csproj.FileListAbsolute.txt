@@ -1,0 +1,12 @@
+E:\Projetos\CondoSism\WebApplication1\Application\bin\Debug\net5.0\Application.deps.json
+E:\Projetos\CondoSism\WebApplication1\Application\bin\Debug\net5.0\Application.dll
+E:\Projetos\CondoSism\WebApplication1\Application\bin\Debug\net5.0\ref\Application.dll
+E:\Projetos\CondoSism\WebApplication1\Application\bin\Debug\net5.0\Application.pdb
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\Application.csproj.AssemblyReference.cache
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\Application.AssemblyInfoInputs.cache
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\Application.AssemblyInfo.cs
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\Application.csproj.CoreCompileInputs.cache
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\Application.dll
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\ref\Application.dll
+E:\Projetos\CondoSism\WebApplication1\Application\obj\Debug\net5.0\Application.pdb
